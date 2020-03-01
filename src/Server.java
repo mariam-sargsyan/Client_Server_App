@@ -37,7 +37,7 @@ class ClientHandler implements Callable {
         try (Scanner scanner = new Scanner(clientSocket.getInputStream());
              Writer writer = new OutputStreamWriter(clientSocket.getOutputStream())) {
             while (!clientSocket.isClosed()) {
-                if (scanner.hasNext()) {
+                if (scanner.hasNextLine()) {
                     String currentLine = scanner.nextLine();
                     if (currentLine.contains("Stop")) {
                         writer.write("The process is stopped");
